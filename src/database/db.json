@@ -1,0 +1,54 @@
+{
+  "emplooyer": [
+    {
+      "id": 1,
+      "name": "Caroline Mendes",
+      "cpf": "713.166.090-65",
+      "email": "caroline@gmail.com",
+      "phone": "7896547896",
+      "birth_date": "31/10/1997",
+      "salary": "2.300",
+      "created_at": "14/05/2022"
+    },
+    {
+      "id": 2,
+      "name": "samir",
+      "cpf": "713.166.090-65",
+      "email": "samor@gmail.com",
+      "phone": "7896547896",
+      "birth_date": "31/10/1997",
+      "salary": "2.300",
+      "created_at": "14/05/2022"
+    },
+    {
+      "id": 4,
+      "name": "Mohd Shami",
+      "cpf": "713.166.090-65",
+      "email": "shami@gmail.com",
+      "phone": "7896547896",
+      "birth_date": "31/10/1997",
+      "salary": "2.300",
+      "created_at": "14/05/2022"
+    },
+    {
+      "id": 4,
+      "name": "Mohd Shami",
+      "cpf": "713.166.090-65",
+      "email": "shami@gmail.com",
+      "phone": "7896547896",
+      "birth_date": "31/10/1997",
+      "salary": "2.300",
+      "created_at": "14/05/2022"
+    },
+    {
+      "id": 4,
+      "name": "Mohd Shami",
+      "cpf": "713.166.090-65",
+      "email": "shami@gmail.com",
+      "phone": "7896547896",
+      "birth_date": "31/10/1997",
+      "salary": "2.300",
+      "created_at": "14/05/2022"
+    }
+  ]
+}
