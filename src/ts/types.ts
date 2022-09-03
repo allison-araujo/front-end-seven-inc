@@ -10,17 +10,42 @@ export type Employee = {
 };
 
 export type FormsValues = {
-  id: number;
+  id: string | number;
   name: string;
-  label: number;
+  label: string;
   type: string;
   value: string | number;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
-export type ButtonType = {
+export type Button = {
   children: React.ReactNode;
 };
 
 export interface IdType {
   id: number;
+}
+
+export type ButtonType = {
+  text: string;
+  size: number | string;
+  color: string;
+  type: string;
+  variant: string;
+
+  onClick: (e: React.MouseEventHandler<HTMLInputElement>) => void;
+};
+
+export type DateType = {
+  name: string;
+  label: string;
+  value: string;
+  date: Date;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+};
+
+export interface IPageHeaderProps {
+  title: string;
+  subTitle: string;
+  icon: any;
 }
