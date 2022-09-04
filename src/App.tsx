@@ -1,20 +1,21 @@
-import EditUser from "./component/Pages/EditUser";
-import NavBar from "./components/Navbar";
-import AddUser from "./Pages/AddUser/AddUser";
-import NotFound from "./Pages/Notfound";
-
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Layout from "./components/Layout";
+import Details from "./Pages/Details/Details";
+import Employee from "./Pages/Employeer/Employee";
+import ListEmployee from "./Pages/ListEmployee/ListEmployee";
 
 function App() {
   return (
     <BrowserRouter>
-      <NavBar />
-      <Routes>
-        <Route path="/" element={<NotFound />} />
-        <Route path="/all" element={<AllUsers />} />
-        <Route path="/add" element={<AddUser />} />
-        <Route path="/edit/:id" element={<EditUser />} />
-      </Routes>
+      <Layout>
+        {/* <Sidebar /> */}
+
+        <Routes>
+          <Route path="/" element={<Employee />} />
+          <Route path="/employee" element={<ListEmployee />} />
+          <Route path="/employee/:id" element={<Details />} />
+        </Routes>
+      </Layout>
     </BrowserRouter>
   );
 }
