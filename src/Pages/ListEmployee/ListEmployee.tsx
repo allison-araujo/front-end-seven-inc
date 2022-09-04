@@ -1,65 +1,11 @@
 import { makeStyles, TableBody, TableCell } from "@material-ui/core";
 import { Delete, Edit } from "@material-ui/icons";
 import { Button, styled, Table, TableHead, TableRow } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { deleteEmplooyer, findEmplooyers } from "../../services/api";
+import { Employee } from "../../ts/types";
 
-// const StyledTable = styled(Table)`
-//   width: 90%;
-//   margin: 50px 0 0 50px;
-// `;
 
-const emplooyer = [
-  {
-    id: 1,
-    name: "Caroline Mendes",
-    cpf: "713.166.090-65",
-    email: "caroline@gmail.com",
-    phone: "7896547896",
-    birth_date: "31/10/1997",
-    salary: "2.300",
-    created_at: "14/05/2022",
-  },
-  {
-    id: 2,
-    name: "samir",
-    cpf: "713.166.090-65",
-    email: "samor@gmail.com",
-    phone: "7896547896",
-    birth_date: "31/10/1997",
-    salary: "2.300",
-    created_at: "14/05/2022",
-  },
-  {
-    id: 4,
-    name: "Mohd Shami",
-    cpf: "713.166.090-65",
-    email: "shami@gmail.com",
-    phone: "7896547896",
-    birth_date: "31/10/1997",
-    salary: "2.300",
-    created_at: "14/05/2022",
-  },
-  {
-    id: 4,
-    name: "Mohd Shami",
-    cpf: "713.166.090-65",
-    email: "shami@gmail.com",
-    phone: "7896547896",
-    birth_date: "31/10/1997",
-    salary: "2.300",
-    created_at: "14/05/2022",
-  },
-  {
-    id: 4,
-    name: "Mohd Shami",
-    cpf: "713.166.090-65",
-    email: "shami@gmail.com",
-    phone: "7896547896",
-    birth_date: "31/10/1997",
-    salary: "2.300",
-    created_at: "14/05/2022",
-  },
-];
 
 const THead = styled(TableRow)`
   & > th {
@@ -95,23 +41,22 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const ListEmployee = () => {
-  const [employ, setEmploy] = useState();
-
+  const [emplooyer, setEmploy] = useState([]);
   const classes = useStyles();
 
-  // useEffect(() => {
-  //   listFindEmploye();
-  // }, []);
+  useEffect(() => {
+    listFindEmploye();
+  }, []);
 
-  // const listFindEmploye = async () => {
-  //   let response = await employeeService.findEmplooyers();
-  //   setEmploy(response.data);
-  // };
+  const deleteEmployee = async (id: any) => {
+    await deleteEmplooyer(id);
+    listFindEmploye();
+  };
 
-  // const deleteEmployee = async (id: any) => {
-  //   await employeeService.deleteEmplooyer(id);
-  //   listFindEmploye();
-  // };
+  const listFindEmploye = async () => {
+    let response = await findEmplooyers();
+    setEmploy(response?.data);
+  };
 
   const TblContainer = (props: any) => (
     <Table className={classes.table}>{props.children}</Table>
@@ -133,7 +78,7 @@ const ListEmployee = () => {
         </THead>
       </TableHead>
       <TableBody>
-        {emplooyer.map((item: any) => (
+        {emplooyer.map((item: Employee) => (
           <TRow key={item.id}>
             <TableCell>{item.id}</TableCell>
             <TableCell>{item.name}</TableCell>
@@ -155,7 +100,7 @@ const ListEmployee = () => {
               <Button
                 color="secondary"
                 variant="contained"
-                // onClick={() => deleteEmployee(employee.id)}
+                onClick={() => deleteEmployee(item.id)}
               >
                 <Delete fontSize="large" />
               </Button>
