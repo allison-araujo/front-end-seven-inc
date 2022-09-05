@@ -10,9 +10,9 @@ export type Employee = {
 };
 
 export type FormsValues = {
-  id: string | number;
+  id?: string | number;
   name: string;
-  label: string;
+  label?: string;
   type: string;
   value: string | number;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
@@ -23,7 +23,7 @@ export type Button = {
 };
 
 export interface IdType {
-  id: number;
+  id: number | string;
 }
 
 export type ButtonType = {
@@ -41,11 +41,10 @@ export type DateType = {
   label: string;
   value: string;
   date: Date;
-  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
 export interface IPageHeaderProps {
-  title: string;
-  subTitle: string;
-  icon: any;
+  title?: string;
+  subTitle?: string;
+  icon?: any;
 }
