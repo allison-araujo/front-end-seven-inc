@@ -10,6 +10,8 @@ const InputField = (values: FormsValues) => {
       name={values.name}
       value={values.value}
       onChange={values.onChange}
+      type={values.type}
+      required
     />
   );
 };
