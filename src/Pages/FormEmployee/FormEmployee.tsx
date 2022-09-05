@@ -1,8 +1,10 @@
 import { Grid } from "@material-ui/core";
+import { Button } from "@mui/material";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Form from "../../components/Form/Form";
 import InputField from "../../components/InputField/InputField";
-import * as employeeService from "../../services/api";
+import { createEmployer } from "../../services/api";
 import { Employee } from "../../ts/types";
 
 const initialValue: Employee = {
@@ -19,83 +21,84 @@ const initialValue: Employee = {
 const FormEmployee = () => {
   const [emplooyer, setEmplooyer] = useState(initialValue);
 
+  const { name, cpf, email, phone, birth_date, salary, created_at } = emplooyer;
+  let navigate = useNavigate();
+
+  const addEmployees = async () => {
+    await createEmployer(emplooyer);
+    navigate("/employee");
+  };
+
   const handleInputChange = (e: any) => {
     setEmplooyer({ ...emplooyer, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    employeeService.createEmployer(emplooyer);
-  };
-
   return (
-    <Form onSubmit={handleSubmit}>
+    <Form>
       <Grid container>
         <Grid item xs={6}>
           <InputField
             name="name"
             label="Nome"
-            value={emplooyer.name}
+            value={name}
             onChange={handleInputChange}
-            id={0}
-            type={""}
+            type="text"
           />
           <InputField
             label="cpf"
             name="cpf"
-            value={emplooyer.cpf}
+            value={cpf}
             onChange={handleInputChange}
-            id={0}
-            type={""}
+            type="text"
           />
           <InputField
             label="Email"
             name="email"
-            value={emplooyer.email}
+            value={email}
             onChange={handleInputChange}
-            id={0}
-            type={""}
+            type="text"
           />
           <InputField
             label="Telefone"
             name="phone"
-            value={emplooyer.phone}
+            value={phone}
             onChange={handleInputChange}
-            id={0}
-            type={""}
+            type="text"
           />
         </Grid>
         <Grid item xs={6}>
           <InputField
-            label="Data de Nascimento"
-            name="birth"
-            value={emplooyer.birth_date}
+            name="birth_date"
+            label=""
+            value={birth_date}
             onChange={handleInputChange}
-            id={0}
-            type={""}
+            type="date"
           />
 
           <InputField
             label="Salario"
             name="salary"
-            value={emplooyer.salary}
+            value={salary}
             onChange={handleInputChange}
-            id={0}
-            type={""}
+            type="text"
           />
 
           <InputField
-            label="Data de Contratação"
-            name="create_at"
-            value={emplooyer.created_at}
+            label=""
+            name="created_at"
+            value={created_at}
             onChange={handleInputChange}
-            id={0}
-            type={""}
+            type="date"
           />
 
-          <div>
-            <button type="submit" />
-          </div>
+          <Button
+            variant="contained"
+            color="primary"
+            type="submit"
+            onClick={() => addEmployees()}
+          >
+            Adicionar Funcionarios
+          </Button>
         </Grid>
       </Grid>
     </Form>
