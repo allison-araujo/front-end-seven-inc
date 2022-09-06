@@ -2,10 +2,9 @@ import { makeStyles, TableBody, TableCell } from "@material-ui/core";
 import { Delete, Edit } from "@material-ui/icons";
 import { Button, styled, Table, TableHead, TableRow } from "@mui/material";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { deleteEmplooyer, findEmplooyers } from "../../services/api";
 import { Employee } from "../../ts/types";
-
-
 
 const THead = styled(TableRow)`
   & > th {
@@ -80,20 +79,24 @@ const ListEmployee = () => {
       <TableBody>
         {emplooyer.map((item: Employee) => (
           <TRow key={item.id}>
-            <TableCell>{item.id}</TableCell>
-            <TableCell>{item.name}</TableCell>
-            <TableCell>{item.cpf}</TableCell>
-            <TableCell>{item.email}</TableCell>
-            <TableCell>{item.phone}</TableCell>
-            <TableCell>{item.birth_date}</TableCell>
-            <TableCell>{item.salary}</TableCell>
-            <TableCell>{item.created_at}</TableCell>
+            <Link to={`/employeee/${item.id}`}>
+              <TableCell>{item.id}</TableCell>
+              <TableCell>{item.name}</TableCell>
+              <TableCell>{item.cpf}</TableCell>
+              <TableCell>{item.email}</TableCell>
+              <TableCell>{item.phone}</TableCell>
+              <TableCell>{item.birth_date}</TableCell>
+              <TableCell>{item.salary}</TableCell>
+              <TableCell>{item.created_at}</TableCell>
+            </Link>
 
             <TableCell>
               <Button
                 color="primary"
                 variant="contained"
                 style={{ marginRight: 10 }}
+                component={Link}
+                to={`/employee/${item.id}`}
               >
                 <Edit fontSize="large" />
               </Button>
