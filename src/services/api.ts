@@ -1,7 +1,8 @@
 import axios from "axios";
-import http from "../https/http";
 
 import { Employee, IdType } from "../ts/types";
+
+const http = "http://localhost:3002/emplooyer";
 
 export const findEmplooyers = async () => {
   try {
@@ -14,15 +15,16 @@ export const findEmplooyers = async () => {
 };
 
 export const findEmplooyersDetails = async (id: any) => {
+  id = id || "";
   try {
-    return await axios.get(`/${http}/emplooye/${id}`);
+    return await axios.get(`${http}/${id}`);
   } catch (error) {
     console.log("erro find employers ", error);
   }
 };
 
 export const createEmployer = async (emplooyer: Employee) => {
-  const json = await axios.post(`${http}/exmployee`, emplooyer);
+  const json = await axios.post(`${http}`, emplooyer);
 
   return json;
 };
@@ -31,6 +33,6 @@ export const deleteEmplooyer = async (id: IdType) => {
   return await axios.delete(`${http}/${id}`);
 };
 
-export const editEmplooyer = async (id: IdType, emplooyer: Employee) => {
-  return await axios.put(`/${http}/${id}`, emplooyer);
+export const editEmplooyer = async (id: any, emplooyer: Employee) => {
+  return await axios.put(`${http}/${id}`, emplooyer);
 };
