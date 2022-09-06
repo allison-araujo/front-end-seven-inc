@@ -4,14 +4,13 @@ const useStyles = makeStyles(theme => ({
   root: {
     "& .MuiFormControl-root": {
       width: "80%",
-      margin: theme.spacing(1),
+      margin: theme.spacing(5),
     },
   },
 }));
 
 interface FormsValues {
   children: React.ReactNode;
-  onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
 }
 
 const Form = (props: FormsValues) => {
