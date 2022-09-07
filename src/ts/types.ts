@@ -28,7 +28,7 @@ export interface IdType {
 
 export type ButtonType = {
   text: string;
-  size: number | string;
+  size: string;
   color: string;
   type: string;
   variant: string;
