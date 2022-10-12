@@ -1,4 +1,4 @@
-import { Employee, IdType } from "../ts/types";
+import { Employee } from "../ts/types";
 
 import http from "../https/http";
 
@@ -12,25 +12,25 @@ export const findEmplooyers = async () => {
   }
 };
 
-export const findEmplooyersDetails = async (id: IdType) => {
-  id = id || "";
+export const findEmplooyersDetails = async (id: number) => {
   try {
-    return await http.get(`${id}`);
+    return await http.get(`/${id}`);
   } catch (error) {
     console.log("erro find employers ", error);
   }
 };
 
 export const createEmployer = async (emplooyer: Employee) => {
-  const json = await http.post(`${emplooyer}`);
+  console.log("criar novo usuarios");
+  const json = await http.post(`/`, emplooyer);
 
   return json;
 };
 
-export const deleteEmplooyer = async (id: IdType) => {
+export const deleteEmplooyer = async (id: number) => {
   return await http.delete(`/${id}`);
 };
 
-export const editEmplooyer = async (id: IdType, emplooyer: Employee) => {
+export const editEmplooyer = async (id: number, emplooyer: Employee) => {
   return await http.put(`/${id}`, emplooyer);
 };
