@@ -3,7 +3,10 @@ import { Delete, Edit } from "@material-ui/icons";
 import { Button, styled, Table, TableHead, TableRow } from "@mui/material";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { deleteEmplooyer, findEmplooyers } from "../../services/api";
+import {
+  deleteEmplooyer,
+  findEmplooyers,
+} from "../../services/serviceEmployee";
 import { Employee } from "../../ts/types";
 
 const THead = styled(TableRow)`
