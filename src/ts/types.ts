@@ -1,5 +1,5 @@
 export type Employee = {
-  id: number | string;
+  id: number;
   name: string;
   cpf: string;
   email: string;
@@ -21,10 +21,6 @@ export type FormsValues = {
 export type Button = {
   children: React.ReactNode;
 };
-
-export interface IdType {
-  id: number | string;
-}
 
 export type ButtonType = {
   text: string;

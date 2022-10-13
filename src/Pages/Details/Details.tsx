@@ -2,24 +2,22 @@ import { AxiosResponse } from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import DetailsEmployee from "../../components/DetailsEmployee/DetailsEmployee";
-import * as employeeService from "../../services/api";
+import * as employeeService from "../../services/serviceEmployee";
 
 const Details = () => {
   const [values, setValues] = useState([] as any);
-  const { id: employeeID } = useParams();
+  const { id }: any = useParams();
+  const [loading, setLoading] = useState();
+
   const [data, setData] = useState<AxiosResponse | null>(null);
 
   useEffect(() => {
     try {
       //   setLoading(true);
-      employeeService.findEmplooyersDetails(employeeID).then(res => {
+      employeeService.findEmplooyersDetails(id).then(res => {
         if (res) {
           setValues(res.data);
-          console.log("res aqui", res);
           setData(data?.data);
-          console.log("data aqui", data?.data);
-
-          console.log("details do employ", res);
 
           //   setLoading(false);
         }
@@ -27,7 +25,7 @@ const Details = () => {
     } catch (error) {
       alert("Nao foi possivel buscar Pessoa");
     }
-  }, [employeeID]);
+  }, [id]);
 
   return (
     <DetailsEmployee

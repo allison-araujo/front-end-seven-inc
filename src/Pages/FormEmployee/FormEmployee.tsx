@@ -4,7 +4,8 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Form from "../../components/Form/Form";
 import InputField from "../../components/InputField/InputField";
-import { createEmployer } from "../../services/api";
+import { createEmployer } from "../../services/serviceEmployee";
+
 import { Employee } from "../../ts/types";
 
 const initialValue: Employee = {
@@ -26,6 +27,7 @@ const FormEmployee = () => {
 
   const addEmployees = async () => {
     await createEmployer(emplooyer);
+
     navigate("/employee");
   };
 

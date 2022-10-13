@@ -4,8 +4,16 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import Form from "../../components/Form/Form";
 import InputField from "../../components/InputField/InputField";
-import { editEmplooyer, findEmplooyersDetails } from "../../services/api";
+import {
+  editEmplooyer,
+  findEmplooyersDetails,
+} from "../../services/serviceEmployee";
+
 import { Employee } from "../../ts/types";
+
+interface IdType {
+  id: number;
+}
 
 const initialValue: Employee = {
   id: 0,
@@ -21,7 +29,9 @@ const initialValue: Employee = {
 const EditFormEmployee = () => {
   const [emplooyer, setEmplooyer] = useState(initialValue);
   const { name, cpf, email, phone, birth_date, salary, created_at } = emplooyer;
-  const { id } = useParams();
+
+  const { id }: any = useParams();
+
   let navigate = useNavigate();
 
   useEffect(() => {
